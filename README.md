@@ -28,7 +28,10 @@ pip install -r requirements.txt
 Accessing application:
 python3 app.py #main application file
 application URL : http://127.0.0.1:5000 (Local Host)
-application URL : http://16.16.68.195/ (Public URL)
+application URL : http://16.16.68.195/ (Public URL) 
+application URL : http://ec2-16-16-68-195.eu-north-1.compute.amazonaws.com (Public URL) 
+
+
 
 
 
