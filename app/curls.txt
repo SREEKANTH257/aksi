@@ -1,0 +1,48 @@
+curl -X POST http://127.0.0.1:5000/register -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"password\", \"role\": \"Admin\"}"
+
+curl -X POST http://127.0.0.1:5000/login -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"106-427-112\"}"
+
+
+
+scp -i auth_dash.pem user_auth_dashboard ec2-user@ec2-16-171-28-235.eu-north-1.compute.amazonaws.com:/home/ec2-user/
+
+ssh -i auth_dash.pem ec2-user@ec2-16-171-28-235.eu-north-1.compute.amazonaws.com
+
+
+
+Registering
+
+curl -X POST http://localhost:5000/register -H "Content-Type: application/json" -d '{"username": "abcd", "password": "testpassword", "role": "developer"}'
+
+Logging in :
+
+curl -X POST http://localhost:5000/login \ -H "Content-Type: application/json" \ -d '{"username": "zx", "password": "1234", "role": "developer"}'
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInJvbGUiOiJkZXZlbG9wZXIiLCJleHBpcmF0aW9uIjozNjAwMDAwMDAwMH0.XY_wCj2P3ocjch44UGk5P8kkkiPT5RzRuT0CTT9DWU" http://localhost:5000/api/dashboard
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyNjE3MDA5OX0.lqg5qYppSbYVSMJ8Yy9baGZfWiSOu_6DXN81YUjMzvY" http://localhost:5000/api/dashboard
+
+
+Connecting to EC2 instance
+
+scp -i mykeypair.pem app ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com:/home/ec2-user/   ( deploying)
+
+scp -i mykeypair.pem C:\Users\sreek\aksi\app\app.Py ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com:/home/ec2-user/app  (deploying code)
+
+
+ssh -i mykeypair.pem ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com (connecting to instance)
+
+sudo lsof -i :5000
+
+kill -9 5000
+
+/etc/nginx/conf.d
+
+sudo nginx -t
+
+sudo systemctl restart nginx
+
+sudo systemctl reload nginx
+
+
+
