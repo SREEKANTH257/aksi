@@ -3,3 +3,4 @@ Flask
 Flask-SQLAlchemy
 Flask-JWT-Extended
 Amazon EC2 Free Tier Instance
+SQLite
