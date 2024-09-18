@@ -15,7 +15,7 @@ aksi/
 │   ├── verifycurl.py
 │   └── viewdb.py
 ├── instance/
-│   └── myapp.config
+│   └── myapp.conf
 ├── requirements.txt
 └── README.md
 
