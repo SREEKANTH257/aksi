@@ -1,18 +1,13 @@
+To_register:
 curl -X POST http://127.0.0.1:5000/register -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"password\", \"role\": \"Admin\"}"
-
+To_login:
 curl -X POST http://127.0.0.1:5000/login -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"106-427-112\"}"
 
-
-
-scp -i auth_dash.pem user_auth_dashboard ec2-user@ec2-16-171-28-235.eu-north-1.compute.amazonaws.com:/home/ec2-user/
-
-ssh -i auth_dash.pem ec2-user@ec2-16-171-28-235.eu-north-1.compute.amazonaws.com
-
-
-
 Registering
-
 curl -X POST http://localhost:5000/register -H "Content-Type: application/json" -d '{"username": "abcd", "password": "testpassword", "role": "developer"}'
+
+For user list(Dashboard)
+curl -X GET http://127.0.0.1:5000//api/dashboard \ -H "Authorization: Bearer $token" \ -H "Content-Type: application/json"
 
 Logging in :
 
