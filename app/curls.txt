@@ -1,3 +1,4 @@
+LOCAL SERVER
 To_register:
 curl -X POST http://127.0.0.1:5000/register -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"password\", \"role\": \"Admin\"}"
 To_login:
@@ -9,9 +10,6 @@ curl -X POST http://localhost:5000/register -H "Content-Type: application/json" 
 For user list(Dashboard)
 curl -X GET http://127.0.0.1:5000//api/dashboard \ -H "Authorization: Bearer $token" \ -H "Content-Type: application/json"
 
-Logging in :
-
-curl -X POST http://localhost:5000/login \ -H "Content-Type: application/json" \ -d '{"username": "zx", "password": "1234", "role": "developer"}'
 
 curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInJvbGUiOiJkZXZlbG9wZXIiLCJleHBpcmF0aW9uIjozNjAwMDAwMDAwMH0.XY_wCj2P3ocjch44UGk5P8kkkiPT5RzRuT0CTT9DWU" http://localhost:5000/api/dashboard
 
@@ -20,16 +18,13 @@ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFt
 
 Connecting to EC2 instance
 
-scp -i mykeypair.pem app ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com:/home/ec2-user/   ( deploying)
+scp -i mykeypair.pem app ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com:/home/ec2-user/  
 
-scp -i mykeypair.pem C:\Users\sreek\aksi\app\app.Py ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com:/home/ec2-user/app  (deploying code)
+scp -i mykeypair.pem C:\Users\sreek\aksi\app\app.Py ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com:/home/ec2-user/app 
 
 
 ssh -i mykeypair.pem ec2-user@ec2-13-60-80-67.eu-north-1.compute.amazonaws.com (connecting to instance)
 
-sudo lsof -i :5000
-
-kill -9 5000
 
 /etc/nginx/conf.d
 
@@ -40,4 +35,6 @@ sudo systemctl restart nginx
 sudo systemctl reload nginx
 
 
+sudo lsof -i :5000
 
+kill -9 5000
