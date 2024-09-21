@@ -15,6 +15,7 @@ aksi/
 │   ├── verifycurl.py                 # verify curl
 │   ├── users.db                      # users database file
 │   └── viewdb.py                     # Test DB connection
+├── static/
 ├── instance/
 │   └── myapp.conf                    #configuration file
 ├── requirements.txt                    # Python dependencies
