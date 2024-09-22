@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form id="registerForm">
+        <label for="registerUsername">Username:</label>
+        <input type="text" id="registerUsername" required>
+        <br>
+        <label for="registerPassword">Password:</label>
+        <input type="password" id="registerPassword" required>
+        <br>
+        <label for="registerRole">Role:</label>
+        <select id="registerRole" required>
+            <option value="root">Root</option>
+            <option value="admin">Admin</option>
+            <option value="developer">Developer</option>
+            <option value="trainee">Trainee</option>
+        </select>
+        <br>
+        <button type="button" onclick="register()">Register</button>
+    </form>
+
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" required>
+        <br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required>
+        <br>
+        <label for="loginRole">Role:</label>
+        <select id="loginRole" required>
+            <option value="root">Root</option>
+            <option value="admin">Admin</option>
+            <option value="developer">Developer</option>
+            <option value="trainee">Trainee</option>
+        </select>
+        <br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <h1>Query Users</h1>
+    <form id="queryForm">
+        <label for="queryRole">Role:</label>
+        <select id="queryRole" required>
+            <option value="root">Root</option>
+            <option value="admin">Admin</option>
+            <option value="developer">Developer</option>
+            <option value="trainee">Trainee</option>
+        </select>
+        <br>
+        <button type="button" onclick="queryUsers()">Query</button>
+    </form>
+    <div id="userList"></div>
+
+    <script>
+        function register() {
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const role = document.getElementById('registerRole').value;
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password, role }),
+            })
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(error => console.error('Error:', error));
+        }
+              
+
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const role = document.getElementById('loginRole').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password, role }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    // Store token and redirect
+                    localStorage.setItem('token', data.token);
+                    window.location.href = '/dashboard';  // Adjust as needed
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function queryUsers() {
+            const role = document.getElementById('queryRole').value;
+            const token = localStorage.getItem('token');
+
+            fetch('/api/dashboard', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                const userList = document.getElementById('userList');
+                userList.innerHTML = '<h2>Users:</h2>' + (data.users.length ? data.users.map(user => `<p>${user}</p>`).join('') : '<p>No users found</p>');
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
