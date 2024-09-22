@@ -16,7 +16,10 @@ aksi/
 │   ├── users.db                      # users database file
 │   └── viewdb.py                     # Test DB connection
 ├── static/
+│   ├── styles.css                    #styles
 ├── templates/
+│   ├── index.html                    #UI/ Main page
+│   ├── dashboard.html                #dashboard page
 ├── instance/
 │   └── myapp.conf                    #configuration file
 ├── requirements.txt                    # Python dependencies
