@@ -19,7 +19,7 @@ aksi/
 │   ├── styles.css                    #styles
 ├── templates/
 │   ├── index.html                    #UI/ Main page
-│   ├── dashboard.html                #dashboard page
+│   └── dashboard.html                #dashboard page
 ├── instance/
 │   └── myapp.conf                    #configuration file
 ├── requirements.txt                    # Python dependencies
